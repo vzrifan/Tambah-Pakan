@@ -25,9 +25,14 @@ namespace TambahPakan {
         private unowned Gtk.HeaderBar header_bar;
         [GtkChild]
         private unowned Gtk.Button tambah;
+        [GtkChild]
+        private unowned Gtk.Grid grid;
 
         construct{
-            tambah.clicked.connect(() => tambahPakanForm(this));
+            tambah.clicked.connect(() => tambahPakanForm());
+            PakanModel dataPakan = new PakanModel();
+            GLib.List<GLib.HashTable<string, string>> entry = dataPakan.readFile();
+            addTable(entry);
         }
 
         public Window (Gtk.Application app) {
@@ -43,10 +48,26 @@ namespace TambahPakan {
             Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
         }
 
-        public void tambahPakanForm(Gtk.Window parent){
+        public void addTable(GLib.List<GLib.HashTable<string, string>> entries){
+            int i = 2;
+            int j = 0;
+            entries.foreach((entry)=>{ 
+                entry.foreach((key, value) => {
+                    Gtk.Label label = new Gtk.Label(key + ": " + value);
+                    label.set_name("label");
+                    grid.attach(label, j, i);
+                    i+=1;
+                    //  print("%s: %s\n", key, value);
+                });
+                j=0;
+                //  print("\n");
+            });
+        }
+
+        public void tambahPakanForm(){
             var form = new Gtk.Dialog();
             form.title = "Tambah Pakan";
-            form.transient_for = parent;
+            form.transient_for = this;
             form.destroy_with_parent = false;
             form.set_default_size(600, 800);
 
@@ -65,20 +86,89 @@ namespace TambahPakan {
             var entry2 = new Gtk.Entry();
             entry2.placeholder_text = "Contoh: pakan ABC";
             content_area.append(entry2);
+
+            var label3 = new Gtk.Label("Jenis Pakan");
+            content_area.append(label3);
+
+            Gee.ArrayList<string> jenisPakanValues = new Gee.ArrayList<string>();
+            jenisPakanValues.add("Pilih");
+            jenisPakanValues.add("Jenis Pakan 1");
+            jenisPakanValues.add("Jenis Pakan 2");
+            jenisPakanValues.add("Jenis Pakan 3");
+            jenisPakanValues.add("Jenis Pakan 4");
+            var jenisPakanCombo = new Gtk.ComboBoxText();
+            foreach (var value in jenisPakanValues)
+            {
+                jenisPakanCombo.append_text(value);
+            }
+            jenisPakanCombo.set_active(0);
+            content_area.append(jenisPakanCombo);
+
+            var label5 = new Gtk.Label("Tanggal");
+            content_area.append(label5);
+
+            var tanggalCalendar = new Gtk.Calendar();
+            content_area.append(tanggalCalendar);
+
+            var label6 = new Gtk.Label("Berat");
+            content_area.append(label6);
+    
+            var entry6 = new Gtk.Entry();
+            content_area.append(entry6);
+
+            var label7 = new Gtk.Label("Modal");
+            content_area.append(label7);
+    
+            var entry7 = new Gtk.Entry();
+            content_area.append(entry7);
     
             var button = new Gtk.Button.with_label("Tambah Pakan");
             button.add_css_class("tambah_button");
-            button.clicked.connect(() => onButtonClicked(form, entry1.text, entry2.text));
+            
+            form.present();
+
+            button.clicked.connect(() => onButtonClicked(form, 
+                entry1.text, 
+                entry2.text, 
+                jenisPakanValues[jenisPakanCombo.get_active()],
+                tanggalCalendar.get_date(),
+                entry6.text,
+                entry7.text
+            ));
             content_area.append(button);
-    
-            form.show();
         }
 
-        public static void onButtonClicked(Gtk.Dialog dialog, string idPakan, string namaPakan){
-            print("ID Pakan: %s\n", idPakan);
-            print("Nama Pakan: %s\n", namaPakan);
+        public static void onButtonClicked(Gtk.Dialog dialog, 
+            string idPakan, 
+            string namaPakan, 
+            string jenisPakan, 
+            GLib.DateTime tanggal, 
+            string berat, 
+            string modal){
+            if (jenisPakan == "Pilih") {
+                jenisPakan = "";
+            }
 
-            dialog.response(Gtk.ResponseType.CLOSE);
+            var file = File.new_for_path("/home/vzrifan/Projects/Tambah_Pakan/src/dataPakan.txt");
+            var stream = file.append_to(FileCreateFlags.NONE);
+
+            string output = "ID Pakan: " + idPakan + "\n";
+            output += "Nama Pakan: " + namaPakan + "\n";
+            output += "Jenis Pakan: " + jenisPakan + "\n";
+            output += "Tanggal: " + tanggal.get_day_of_month().to_string() + "\n";
+            output += "Bulan: " + tanggal.get_month().to_string() + "\n";
+            output += "Tahun: " + tanggal.get_year().to_string() + "\n";
+            output += "Tanggal lengkap: " + tanggal.format("%d-%m-%y") + "\n";
+            output += "Berat: " + berat + "\n";
+            output += "Modal: " + modal + "\n\n";
+
+            stream.write(output.data);
+            stream.close();
+
+            dialog.destroy();
+
+            Window window = (Window)dialog.get_transient_for(); // Get the main window
+            window.addTable(PakanModel.readFile());
         }
     }
 }

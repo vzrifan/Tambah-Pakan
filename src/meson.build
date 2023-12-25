@@ -2,10 +2,12 @@ tambah_pakan_sources = [
   'main.vala',
   'window.vala',
   'application.vala',
+  'pakanModel.vala'
 ]
 
 tambah_pakan_deps = [
   dependency('gtk4'),
+  dependency('gee-0.8'),
 ]
 
 gnome = import('gnome')

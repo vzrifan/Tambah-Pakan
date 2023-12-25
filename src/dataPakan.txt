@@ -1,0 +1,87 @@
+ID Pakan: #1
+Nama Pakan: Pakan a
+Jenis Pakan: Jenis Pakan 1
+Tanggal: 25
+Bulan: 12
+Tahun: 2023
+Tanggal lengkap: 25-12-23
+Berat: 20
+Modal: 100.000
+
+ID Pakan: #2
+Nama Pakan: pakan b
+Jenis Pakan: Jenis Pakan 2
+Tanggal: 25
+Bulan: 12
+Tahun: 2023
+Tanggal lengkap: 25-12-23
+Berat: 25
+Modal: 120.000
+
+ID Pakan: #3
+Nama Pakan: pakan c
+Jenis Pakan: Jenis Pakan 3
+Tanggal: 25
+Bulan: 12
+Tahun: 2023
+Tanggal lengkap: 25-12-23
+Berat: 30
+Modal: 150.000
+ID Pakan: #1
+Nama Pakan: Pakan a
+Jenis Pakan: Jenis Pakan 1
+Tanggal: 25
+Bulan: 12
+Tahun: 2023
+Tanggal lengkap: 25-12-23
+Berat: 20
+Modal: 100.000
+
+ID Pakan: #2
+Nama Pakan: pakan b
+Jenis Pakan: Jenis Pakan 2
+Tanggal: 25
+Bulan: 12
+Tahun: 2023
+Tanggal lengkap: 25-12-23
+Berat: 25
+Modal: 120.000
+
+ID Pakan: #3
+Nama Pakan: pakan c
+Jenis Pakan: Jenis Pakan 3
+Tanggal: 25
+Bulan: 12
+Tahun: 2023
+Tanggal lengkap: 25-12-23
+Berat: 30
+Modal: 150.000
+ID Pakan: #1
+Nama Pakan: Pakan a
+Jenis Pakan: Jenis Pakan 1
+Tanggal: 25
+Bulan: 12
+Tahun: 2023
+Tanggal lengkap: 25-12-23
+Berat: 20
+Modal: 100.000
+
+ID Pakan: #2
+Nama Pakan: pakan b
+Jenis Pakan: Jenis Pakan 2
+Tanggal: 25
+Bulan: 12
+Tahun: 2023
+Tanggal lengkap: 25-12-23
+Berat: 25
+Modal: 120.000
+
+ID Pakan: #3
+Nama Pakan: pakan c
+Jenis Pakan: Jenis Pakan 3
+Tanggal: 25
+Bulan: 12
+Tahun: 2023
+Tanggal lengkap: 25-12-23
+Berat: 30
+Modal: 150.000
