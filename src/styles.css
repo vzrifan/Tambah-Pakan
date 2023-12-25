@@ -1,0 +1,30 @@
+.header_box,
+.end,
+.close {
+    background-color: #45b459;
+}
+
+.title_header_bar {
+    color: #142117;
+    background-color: #45b459;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.tambah_button {
+    margin-top: 50px;
+    min-height: 40px;
+    min-width: 400px;
+    border: 5px solid #45b459;
+    border-radius: 40px;
+}
+
+.tambah_button label {
+    color: #45b459;
+    font-weight: bold;
+    font-size: large;
+}
+
+.tambah_button:hover {
+    background-color: #45b459;
+}
