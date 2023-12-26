@@ -14,6 +14,20 @@
         <property name="halign">center</property>
         <property name="valign">center</property>
         <child>
+          <object class="GtkEntry" id="search">
+            <style>
+              <class name="search" />
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="search_icon">
+            <style>
+              <class name="search_icon" />
+            </style>
+          </object>
+        </child>
+        <child>
           <object class="GtkLabel" id="label">
             <style>
               <class name="label" />
@@ -48,7 +62,7 @@
           <object class="GtkScrolledWindow" id="scrolled_window">
             <property name="hexpand">true</property>
             <property name="vexpand">true</property>
-            <property name="width-request">400</property>
+            <property name="width-request">500</property>
             <property name="height-request">600</property>
             <child>
               <object class="GtkGrid" id="grid">

@@ -35,12 +35,17 @@ namespace TambahPakan {
         private unowned Gtk.ScrolledWindow scrolled_window;
         [GtkChild]
         private unowned Gtk.Image image;
+        [GtkChild]
+        private unowned Gtk.Entry search;
+        [GtkChild]
+        private unowned Gtk.Button search_icon;
 
         construct{
             tambah.clicked.connect(() => tambahPakanForm());
             PakanModel dataPakan = new PakanModel();
             GLib.List<GLib.HashTable<string, string>> entry = dataPakan.readFile();
             addTable(entry);
+            search_icon.connect(()=> searchData());
             if(grid.get_first_child().name == null){
                 scrolled_window.hide();
                 grid.hide();
@@ -55,6 +60,9 @@ namespace TambahPakan {
             title_header_bar.get_style_context ().add_class ("title_header_bar");
             header_bar.set_title_widget(title_header_bar);
             header_bar.get_first_child ().get_first_child ().add_css_class ("header_box");
+            search.placeholder_text = "Cari...";
+            search.activates_default = true;
+            search_icon.set_icon_name("edit-find");
 
             var css_provider = new Gtk.CssProvider ();
             string path = "/home/vzrifan/Projects/Tambah-Pakan/src/styles.css";
@@ -71,6 +79,8 @@ namespace TambahPakan {
                 entry.foreach((key, value) => {
                     Gtk.Label label = new Gtk.Label(key + ": " + value);
                     label.add_css_class("label_data");
+                    label.halign = Gtk.Align.START;
+                    label.valign = Gtk.Align.START;
                     box.attach(label, j, i);
                     i+=1;
                     //  print("%s: %s\n", key, value);
@@ -89,11 +99,14 @@ namespace TambahPakan {
             }
         }
 
+        public void searchData(){
+
+        }
+
         public void addImg(){
             var pixbuf = new Gdk.Pixbuf.from_file("/home/vzrifan/Projects/Tambah-Pakan/src/img/empty_pakan.png");
             var label = new Gtk.Label("Anda belum memiliki pakan");
             var button = container.get_last_child();
-            var grid = container.get_last_child();
             image.set_from_pixbuf(pixbuf);
             image.set_size_request(300, 700);
             label.add_css_class("label_null");
@@ -163,7 +176,6 @@ namespace TambahPakan {
             var button = new Gtk.Button.with_label("Tambah Pakan");
             button.add_css_class("tambah_button");
             label1.add_css_class("label_form");
-            label2.add_css_class("label_form");
             label3.add_css_class("label_form");
             label5.add_css_class("label_form");
             label6.add_css_class("label_form");
@@ -203,10 +215,7 @@ namespace TambahPakan {
             string output = "ID Pakan: " + idPakan + "\n";
             output += "Nama Pakan: " + namaPakan + "\n";
             output += "Jenis Pakan: " + jenisPakan + "\n";
-            output += "Tanggal: " + tanggal.get_day_of_month().to_string() + "\n";
-            output += "Bulan: " + tanggal.get_month().to_string() + "\n";
-            output += "Tahun: " + tanggal.get_year().to_string() + "\n";
-            output += "Tanggal: " + tanggal.format("%d-%m-%y") + "\n";
+            output += "Tanggal: " + tanggal.format("%d-%m-%Y") + "\n";
             output += "Berat: " + berat + "\n";
             output += "Modal: " + modal + "\n\n";
             stream.write(output.data);
