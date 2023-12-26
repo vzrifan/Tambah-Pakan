@@ -85,8 +85,8 @@ namespace TambahPakan {
                     label.add_css_class("label_data");
                     label.halign = Gtk.Align.START;
                     label.valign = Gtk.Align.START;
-                    box.attach(label, j, i);
                     i+=1;
+                    box.attach(label, j, i);
                     //  print("%s: %s\n", key, value);
                 });
                 j+=1;
@@ -99,7 +99,7 @@ namespace TambahPakan {
                 //  print("\n");
             });
             if(grid.get_last_child().name != null){
-                grid.remove(grid.get_last_child());
+                grid.get_last_child().hide();
             }
         }
 
@@ -119,12 +119,12 @@ namespace TambahPakan {
                             matchFound = true;
                         }
                     });
-        
                     if (matchFound) {
                         filteredData.append(entry);
                     }
                 });
                 addTable(filteredData);
+                grid.get_last_child().show();
             }
         }
 
