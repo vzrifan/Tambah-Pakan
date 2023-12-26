@@ -1,0 +1,120 @@
+ID Pakan: #1
+Nama Pakan: pakan A
+Jenis Pakan: Jenis Pakan 1
+Tanggal: 26
+Bulan: 12
+Tahun: 2023
+Tanggal: 26-12-23
+Berat: 100
+Modal: 100.000
+
+ID Pakan: #4
+Nama Pakan: pakan B
+Jenis Pakan: Jenis Pakan 2
+Tanggal: 26
+Bulan: 12
+Tahun: 2023
+Tanggal: 26-12-23
+Berat: 200
+Modal: 200.000
+
+ID Pakan: #3
+Nama Pakan: pakan C
+Jenis Pakan: Jenis Pakan 3
+Tanggal: 26
+Bulan: 12
+Tahun: 2023
+Tanggal: 26-12-23
+Berat: 300
+Modal: 300.000
+
+ID Pakan: #4
+Nama Pakan: pakan D
+Jenis Pakan: Jenis Pakan 4
+Tanggal: 26
+Bulan: 12
+Tahun: 2023
+Tanggal: 26-12-23
+Berat: 400
+Modal: 400.000
+
+ID Pakan: #1
+Nama Pakan: pakan A
+Jenis Pakan: Jenis Pakan 1
+Tanggal: 26
+Bulan: 12
+Tahun: 2023
+Tanggal: 26-12-23
+Berat: 100
+Modal: 100.000
+
+ID Pakan: #4
+Nama Pakan: pakan B
+Jenis Pakan: Jenis Pakan 2
+Tanggal: 26
+Bulan: 12
+Tahun: 2023
+Tanggal: 26-12-23
+Berat: 200
+Modal: 200.000
+
+ID Pakan: #3
+Nama Pakan: pakan C
+Jenis Pakan: Jenis Pakan 3
+Tanggal: 26
+Bulan: 12
+Tahun: 2023
+Tanggal: 26-12-23
+Berat: 300
+Modal: 300.000
+
+ID Pakan: #4
+Nama Pakan: pakan D
+Jenis Pakan: Jenis Pakan 4
+Tanggal: 26
+Bulan: 12
+Tahun: 2023
+Tanggal: 26-12-23
+Berat: 400
+Modal: 400.000
+
+ID Pakan: #1
+Nama Pakan: pakan A
+Jenis Pakan: Jenis Pakan 1
+Tanggal: 26
+Bulan: 12
+Tahun: 2023
+Tanggal: 26-12-23
+Berat: 100
+Modal: 100.000
+
+ID Pakan: #4
+Nama Pakan: pakan B
+Jenis Pakan: Jenis Pakan 2
+Tanggal: 26
+Bulan: 12
+Tahun: 2023
+Tanggal: 26-12-23
+Berat: 200
+Modal: 200.000
+
+ID Pakan: #3
+Nama Pakan: pakan C
+Jenis Pakan: Jenis Pakan 3
+Tanggal: 26
+Bulan: 12
+Tahun: 2023
+Tanggal: 26-12-23
+Berat: 300
+Modal: 300.000
+
+ID Pakan: #4
+Nama Pakan: pakan D
+Jenis Pakan: Jenis Pakan 4
+Tanggal: 26
+Bulan: 12
+Tahun: 2023
+Tanggal: 26-12-23
+Berat: 400
+Modal: 400.000
+

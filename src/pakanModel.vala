@@ -1,7 +1,7 @@
 class PakanModel{
 
     public static GLib.List<GLib.HashTable<string, string>>? readFile() {
-        var file_path = "/home/vzrifan/Projects/Tambah_Pakan/src/dataPakan.txt";
+        var file_path = "/home/vzrifan/Projects/Tambah-Pakan/src/dataPakan.txt";
         var file = File.new_for_path(file_path);
         GLib.List<GLib.HashTable<string, string>> result = new GLib.List<GLib.HashTable<string, string>>();
 

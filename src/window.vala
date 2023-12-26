@@ -27,12 +27,18 @@ namespace TambahPakan {
         private unowned Gtk.Button tambah;
         [GtkChild]
         private unowned Gtk.Grid grid;
+        [GtkChild]
+        private unowned Gtk.Box container;
 
         construct{
             tambah.clicked.connect(() => tambahPakanForm());
             PakanModel dataPakan = new PakanModel();
             GLib.List<GLib.HashTable<string, string>> entry = dataPakan.readFile();
             addTable(entry);
+            if(grid.get_first_child().name == null){
+                container.get_last_child().hide();
+                addImg();
+            };
         }
 
         public Window (Gtk.Application app) {
@@ -43,25 +49,45 @@ namespace TambahPakan {
             header_bar.get_first_child ().get_first_child ().add_css_class ("header_box");
 
             var css_provider = new Gtk.CssProvider ();
-            string path = "/home/vzrifan/Projects/Tambah_Pakan/src/styles.css";
+            string path = "/home/vzrifan/Projects/Tambah-Pakan/src/styles.css";
             css_provider.load_from_path (path);
             Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
         }
 
         public void addTable(GLib.List<GLib.HashTable<string, string>> entries){
-            int i = 2;
+            int i = 0;
             int j = 0;
+            int k = 0;
             entries.foreach((entry)=>{ 
+                Gtk.Grid box = new Gtk.Grid();
                 entry.foreach((key, value) => {
                     Gtk.Label label = new Gtk.Label(key + ": " + value);
                     label.set_name("label");
-                    grid.attach(label, j, i);
+                    box.attach(label, j, i);
                     i+=1;
                     //  print("%s: %s\n", key, value);
                 });
-                j=0;
+                j+=1;
+                box.add_css_class("box");
+                grid.attach(box, j, k);
+                if(j==4){
+                    j=0;
+                    k+=1;
+                }
                 //  print("\n");
             });
+            grid.remove(grid.get_last_child());
+        }
+
+        public void addImg(){
+            var image = new Gtk.Image();
+            var pixbuf = new Gdk.Pixbuf.from_file("/home/vzrifan/Projects/Tambah-Pakan/src/img/empty_pakan.png");
+            var label = new Gtk.Label("Anda belum memiliki pakan");
+            image.set_from_pixbuf(pixbuf);
+            image.set_size_request(300, 700);
+            container.append(label);
+            label.add_css_class("label_null");
+            container.append(image);
         }
 
         public void tambahPakanForm(){
@@ -149,7 +175,7 @@ namespace TambahPakan {
                 jenisPakan = "";
             }
 
-            var file = File.new_for_path("/home/vzrifan/Projects/Tambah_Pakan/src/dataPakan.txt");
+            var file = File.new_for_path("/home/vzrifan/Projects/Tambah-Pakan/src/dataPakan.txt");
             var stream = file.append_to(FileCreateFlags.NONE);
 
             string output = "ID Pakan: " + idPakan + "\n";
@@ -158,17 +184,28 @@ namespace TambahPakan {
             output += "Tanggal: " + tanggal.get_day_of_month().to_string() + "\n";
             output += "Bulan: " + tanggal.get_month().to_string() + "\n";
             output += "Tahun: " + tanggal.get_year().to_string() + "\n";
-            output += "Tanggal lengkap: " + tanggal.format("%d-%m-%y") + "\n";
+            output += "Tanggal: " + tanggal.format("%d-%m-%y") + "\n";
             output += "Berat: " + berat + "\n";
             output += "Modal: " + modal + "\n\n";
-
             stream.write(output.data);
             stream.close();
 
             dialog.destroy();
 
-            Window window = (Window)dialog.get_transient_for(); // Get the main window
+            Window window = (Window)dialog.get_transient_for();
+            
+            var lastChild = window.container.get_last_child();
+            if (lastChild is Gtk.Image) {
+                window.container.remove(lastChild);
+            }
+
+            var lastChild2 = window.container.get_last_child();
+            if (lastChild2.get_css_classes()[0] == "label_null"){
+                window.container.remove(lastChild2);
+            }
+
             window.addTable(PakanModel.readFile());
+            window.container.get_last_child().show();
         }
     }
 }

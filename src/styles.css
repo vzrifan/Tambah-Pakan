@@ -12,9 +12,10 @@
 }
 
 .tambah_button {
-    margin-top: 50px;
+    margin-top: 20px;
+    margin-bottom: 40px;
     min-height: 40px;
-    min-width: 400px;
+    min-width: 50px;
     border: 5px solid #45b459;
     border-radius: 40px;
 }
@@ -30,5 +31,18 @@
 }
 
 .grid{
-    
+    margin-top: 10px;
+    border: 2px solid black;
+}
+
+.box{
+    margin: 5px;
+    border: 2px solid #45b459;
+    padding: 10px;
+}
+
+.label_null{
+    margin-top: 40px;
+    font-weight: bold;
+    font-size: x-large;
 }
