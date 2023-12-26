@@ -22,6 +22,8 @@ namespace TambahPakan {
         [GtkChild]
         private unowned Gtk.Label label;
         [GtkChild]
+        private unowned Gtk.Label null_pakan;
+        [GtkChild]
         private unowned Gtk.HeaderBar header_bar;
         [GtkChild]
         private unowned Gtk.Button tambah;
@@ -29,6 +31,10 @@ namespace TambahPakan {
         private unowned Gtk.Grid grid;
         [GtkChild]
         private unowned Gtk.Box container;
+        [GtkChild]
+        private unowned Gtk.ScrolledWindow scrolled_window;
+        [GtkChild]
+        private unowned Gtk.Image image;
 
         construct{
             tambah.clicked.connect(() => tambahPakanForm());
@@ -36,7 +42,9 @@ namespace TambahPakan {
             GLib.List<GLib.HashTable<string, string>> entry = dataPakan.readFile();
             addTable(entry);
             if(grid.get_first_child().name == null){
-                container.get_last_child().hide();
+                scrolled_window.hide();
+                grid.hide();
+                label.hide();
                 addImg();
             };
         }
@@ -62,7 +70,7 @@ namespace TambahPakan {
                 Gtk.Grid box = new Gtk.Grid();
                 entry.foreach((key, value) => {
                     Gtk.Label label = new Gtk.Label(key + ": " + value);
-                    label.set_name("label");
+                    label.add_css_class("label_data");
                     box.attach(label, j, i);
                     i+=1;
                     //  print("%s: %s\n", key, value);
@@ -70,24 +78,28 @@ namespace TambahPakan {
                 j+=1;
                 box.add_css_class("box");
                 grid.attach(box, j, k);
-                if(j==4){
+                if(j==2){
                     j=0;
                     k+=1;
                 }
                 //  print("\n");
             });
-            grid.remove(grid.get_last_child());
+            if(grid.get_last_child().name != null){
+                grid.remove(grid.get_last_child());
+            }
         }
 
         public void addImg(){
-            var image = new Gtk.Image();
             var pixbuf = new Gdk.Pixbuf.from_file("/home/vzrifan/Projects/Tambah-Pakan/src/img/empty_pakan.png");
             var label = new Gtk.Label("Anda belum memiliki pakan");
+            var button = container.get_last_child();
+            var grid = container.get_last_child();
             image.set_from_pixbuf(pixbuf);
             image.set_size_request(300, 700);
-            container.append(label);
             label.add_css_class("label_null");
+            container.remove(button);
             container.append(image);
+            container.append(button);
         }
 
         public void tambahPakanForm(){
@@ -95,7 +107,7 @@ namespace TambahPakan {
             form.title = "Tambah Pakan";
             form.transient_for = this;
             form.destroy_with_parent = false;
-            form.set_default_size(600, 800);
+            form.set_default_size(500, 600);
 
             var content_area = form.get_content_area();
 
@@ -150,6 +162,16 @@ namespace TambahPakan {
     
             var button = new Gtk.Button.with_label("Tambah Pakan");
             button.add_css_class("tambah_button");
+            label1.add_css_class("label_form");
+            label2.add_css_class("label_form");
+            label3.add_css_class("label_form");
+            label5.add_css_class("label_form");
+            label6.add_css_class("label_form");
+            label7.add_css_class("label_form");
+            entry1.add_css_class("input_form");
+            entry2.add_css_class("input_form");
+            entry6.add_css_class("input_form");
+            entry7.add_css_class("input_form");
             
             form.present();
 
@@ -164,7 +186,7 @@ namespace TambahPakan {
             content_area.append(button);
         }
 
-        public static void onButtonClicked(Gtk.Dialog dialog, 
+        public void onButtonClicked(Gtk.Dialog dialog, 
             string idPakan, 
             string namaPakan, 
             string jenisPakan, 
@@ -193,19 +215,13 @@ namespace TambahPakan {
             dialog.destroy();
 
             Window window = (Window)dialog.get_transient_for();
-            
-            var lastChild = window.container.get_last_child();
-            if (lastChild is Gtk.Image) {
-                window.container.remove(lastChild);
-            }
 
-            var lastChild2 = window.container.get_last_child();
-            if (lastChild2.get_css_classes()[0] == "label_null"){
-                window.container.remove(lastChild2);
-            }
-
+            window.scrolled_window.show();
+            window.grid.show();
+            window.label.show();
+            window.image.hide();
+            window.null_pakan.hide();
             window.addTable(PakanModel.readFile());
-            window.container.get_last_child().show();
         }
     }
 }

@@ -46,3 +46,20 @@
     font-weight: bold;
     font-size: x-large;
 }
+
+.label_data{
+    margin: 5px;
+    font-size: large;
+}
+
+.label_form{
+    margin:5px;
+    font-weight: bold;
+}
+
+.input_form{
+    border: 1px solid black;
+    border-radius: 20px;
+    min-height: 40px;
+    min-width: 30px;
+}
