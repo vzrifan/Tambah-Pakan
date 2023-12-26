@@ -105,27 +105,36 @@ namespace TambahPakan {
 
         public void searchData() {
             var data = PakanModel.readFile();
-            string searchText = search.get_text().strip();
+            string searchText = lower(search.get_text().strip());
             GLib.List<GLib.HashTable<string, string>> filteredData = new GLib.List<GLib.HashTable<string, string>>();
         
-            if (searchText=="") {
-                addTable(data);
-            } else {
-                data?.foreach((entry) => {
-                    bool matchFound = false;
+             
+            data?.foreach((entry) => {
+                bool matchFound = false;
         
-                    entry.foreach((key, value) => {
-                        if (key.contains(searchText) || value.contains(searchText)) {
-                            matchFound = true;
-                        }
-                    });
-                    if (matchFound) {
-                        filteredData.append(entry);
+                entry.foreach((key, value) => {
+                    if (lower(key).contains(searchText) || lower(value).contains(searchText)) {
+                        matchFound = true;
                     }
                 });
-                addTable(filteredData);
-                grid.get_last_child().show();
+                if (matchFound) {
+                    filteredData.append(entry);
+                }
+            });
+            addTable(filteredData);
+            grid.get_last_child().show();
+        }
+
+        public string lower(string str){
+            string result = "";
+            for(int i=0;i<str.length;i++){
+                if(str[i].isupper()){
+                    result += str[i].tolower().to_string();
+                }else{
+                    result += str[i].to_string();
+                }
             }
+            return result;
         }
 
         public void addImg(){
