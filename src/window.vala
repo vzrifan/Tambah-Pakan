@@ -42,10 +42,10 @@ namespace TambahPakan {
 
         construct{
             tambah.clicked.connect(() => tambahPakanForm());
+            search_icon.clicked.connect(() => searchData());
             PakanModel dataPakan = new PakanModel();
             GLib.List<GLib.HashTable<string, string>> entry = dataPakan.readFile();
             addTable(entry);
-            search_icon.connect(()=> searchData());
             if(grid.get_first_child().name == null){
                 scrolled_window.hide();
                 grid.hide();
@@ -74,6 +74,10 @@ namespace TambahPakan {
             int i = 0;
             int j = 0;
             int k = 0;
+            while(grid.get_first_child() != null){
+                grid.remove(grid.get_first_child());
+            }
+            //  print("%u\n",entries.length());
             entries.foreach((entry)=>{ 
                 Gtk.Grid box = new Gtk.Grid();
                 entry.foreach((key, value) => {
@@ -99,8 +103,29 @@ namespace TambahPakan {
             }
         }
 
-        public void searchData(){
-
+        public void searchData() {
+            var data = PakanModel.readFile();
+            string searchText = search.get_text().strip();
+            GLib.List<GLib.HashTable<string, string>> filteredData = new GLib.List<GLib.HashTable<string, string>>();
+        
+            if (searchText=="") {
+                addTable(data);
+            } else {
+                data?.foreach((entry) => {
+                    bool matchFound = false;
+        
+                    entry.foreach((key, value) => {
+                        if (key.contains(searchText) || value.contains(searchText)) {
+                            matchFound = true;
+                        }
+                    });
+        
+                    if (matchFound) {
+                        filteredData.append(entry);
+                    }
+                });
+                addTable(filteredData);
+            }
         }
 
         public void addImg(){
