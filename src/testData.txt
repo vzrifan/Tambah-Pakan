@@ -1,120 +1,120 @@
-ID Pakan: #1
-Nama Pakan: pakan A
-Jenis Pakan: Jenis Pakan 1
-Tanggal: 26
-Bulan: 12
-Tahun: 2023
-Tanggal: 26-12-23
-Berat: 100
-Modal: 100.000
-
-ID Pakan: #4
-Nama Pakan: pakan B
-Jenis Pakan: Jenis Pakan 2
-Tanggal: 26
-Bulan: 12
-Tahun: 2023
-Tanggal: 26-12-23
-Berat: 200
-Modal: 200.000
-
-ID Pakan: #3
-Nama Pakan: pakan C
-Jenis Pakan: Jenis Pakan 3
-Tanggal: 26
-Bulan: 12
-Tahun: 2023
-Tanggal: 26-12-23
-Berat: 300
-Modal: 300.000
-
-ID Pakan: #4
-Nama Pakan: pakan D
-Jenis Pakan: Jenis Pakan 4
-Tanggal: 26
-Bulan: 12
-Tahun: 2023
-Tanggal: 26-12-23
-Berat: 400
-Modal: 400.000
-
-ID Pakan: #1
-Nama Pakan: pakan A
-Jenis Pakan: Jenis Pakan 1
-Tanggal: 26
-Bulan: 12
-Tahun: 2023
-Tanggal: 26-12-23
-Berat: 100
-Modal: 100.000
-
-ID Pakan: #4
-Nama Pakan: pakan B
-Jenis Pakan: Jenis Pakan 2
-Tanggal: 26
-Bulan: 12
-Tahun: 2023
-Tanggal: 26-12-23
-Berat: 200
-Modal: 200.000
-
-ID Pakan: #3
-Nama Pakan: pakan C
-Jenis Pakan: Jenis Pakan 3
-Tanggal: 26
-Bulan: 12
-Tahun: 2023
-Tanggal: 26-12-23
-Berat: 300
-Modal: 300.000
-
-ID Pakan: #4
-Nama Pakan: pakan D
-Jenis Pakan: Jenis Pakan 4
-Tanggal: 26
-Bulan: 12
-Tahun: 2023
-Tanggal: 26-12-23
-Berat: 400
-Modal: 400.000
-
-ID Pakan: #1
-Nama Pakan: pakan A
-Jenis Pakan: Jenis Pakan 1
-Tanggal: 26
-Bulan: 12
-Tahun: 2023
-Tanggal: 26-12-23
-Berat: 100
-Modal: 100.000
-
-ID Pakan: #4
-Nama Pakan: pakan B
-Jenis Pakan: Jenis Pakan 2
-Tanggal: 26
-Bulan: 12
-Tahun: 2023
-Tanggal: 26-12-23
-Berat: 200
-Modal: 200.000
-
-ID Pakan: #3
-Nama Pakan: pakan C
-Jenis Pakan: Jenis Pakan 3
-Tanggal: 26
-Bulan: 12
-Tahun: 2023
-Tanggal: 26-12-23
-Berat: 300
-Modal: 300.000
-
-ID Pakan: #4
-Nama Pakan: pakan D
-Jenis Pakan: Jenis Pakan 4
-Tanggal: 26
-Bulan: 12
-Tahun: 2023
-Tanggal: 26-12-23
-Berat: 400
-Modal: 400.000
-
+{	
+    {
+		"Jenis pakan": "Jenis Pakan 1"
+	},	
+	{
+		"Nama pakan": "pakan A"
+	},
+	{
+		"Id pakan": "#1"
+	},	
+	{
+		"Berat": "10"
+	},	
+	{
+		"Tanggal": "27-12-2023"
+	},	
+	{
+		"Modal": "100000"
+	}
+},
+{	
+    {
+	    "Jenis pakan": "Jenis Pakan 2"
+	},	
+	{
+		"Nama pakan": "pakan B"
+	},	
+	{
+		"Id pakan": "#2"
+	},	
+	{
+		"Berat": "20"
+	},	
+	{
+		"Tanggal": "28-12-2023"
+	},	
+	{
+		"Modal": "200000"
+	}
+},
+{	
+    {
+		"Jenis pakan": "Jenis Pakan 3"
+	},
+	{
+		"Nama pakan": "pakan C"
+	},	
+	{
+		"Id pakan": "#3"
+	},	
+	{
+		"Berat": "30"
+	},	
+	{
+		"Tanggal": "29-12-2023"
+	},	
+	{
+		"Modal": "300000"
+	},
+},
+{	
+	{
+		"Jenis pakan": ""
+	}	
+	{
+		"Nama pakan": "pakan D"
+	}	
+	{
+		"Id pakan": "#4"
+	}	
+	{
+		"Berat": "40"
+	}	
+	{
+		"Tanggal": "30-12-2023"
+	}	
+	{
+		"Modal": "400000"
+	}
+}
+{	
+	{
+		"Jenis pakan": "Jenis Pakan 1"
+	}	
+	{
+		"Nama pakan": "pakan E"
+	}	
+	{
+		"Id pakan": "#5"
+	}	
+	{
+		"Berat": "50"
+	}	
+	{
+		"Tanggal": "31-12-2023"
+	}	
+	{
+		"Modal": "500000"
+	}
+}
+{	
+	{
+		"Jenis pakan": "Jenis Pakan 2"
+	}	
+	{
+		"Nama pakan": "pakan F"
+	}	
+	{
+		"Id pakan": "#6"
+	}	
+	{
+		"Berat": "60"
+	}	
+	{
+		"Tanggal": "01-01-2024"
+	}	
+	{
+		"Modal": "600000"
+	}
+}

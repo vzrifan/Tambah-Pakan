@@ -34,13 +34,15 @@
 
 .grid{
     margin-top: 10px;
-    border: 2px solid black;
+    border: 2px solid transparent;
+    border-radius: 10px;
 }
 
 .box{
     margin: 5px;
     border: 2px solid #45b459;
     padding: 10px;
+    border-radius: 10px;
 }
 
 .label_null{

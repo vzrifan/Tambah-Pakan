@@ -43,6 +43,7 @@ namespace TambahPakan {
         construct{
             tambah.clicked.connect(() => tambahPakanForm());
             search_icon.clicked.connect(() => searchData());
+            search.activate.connect(()=>searchData());
             PakanModel dataPakan = new PakanModel();
             GLib.List<GLib.HashTable<string, string>> entry = dataPakan.readFile();
             addTable(entry);
@@ -85,7 +86,7 @@ namespace TambahPakan {
                     label.add_css_class("label_data");
                     label.halign = Gtk.Align.START;
                     label.valign = Gtk.Align.START;
-                    i+=1;
+                    i-=1;
                     box.attach(label, j, i);
                     //  print("%s: %s\n", key, value);
                 });
@@ -98,9 +99,9 @@ namespace TambahPakan {
                 }
                 //  print("\n");
             });
-            if(grid.get_last_child().name != null){
-                grid.get_last_child().hide();
-            }
+            //  if(grid.get_last_child().name != null){
+            //      grid.get_last_child().hide();
+            //  }
         }
 
         public void searchData() {
@@ -245,13 +246,48 @@ namespace TambahPakan {
 
             var file = File.new_for_path("/home/vzrifan/Projects/Tambah-Pakan/src/dataPakan.txt");
             var stream = file.append_to(FileCreateFlags.NONE);
+            var stream_read = file.read();
+            var scanner = new DataInputStream(stream_read);
 
-            string output = "ID Pakan: " + idPakan + "\n";
-            output += "Nama Pakan: " + namaPakan + "\n";
-            output += "Jenis Pakan: " + jenisPakan + "\n";
-            output += "Tanggal: " + tanggal.format("%d-%m-%Y") + "\n";
-            output += "Berat: " + berat + "\n";
-            output += "Modal: " + modal + "\n\n";
+            //  string output = "ID Pakan: " + idPakan + "\n";
+            //  output += "Nama Pakan: " + namaPakan + "\n";
+            //  output += "Jenis Pakan: " + jenisPakan + "\n";
+            //  output += "Tanggal: " + tanggal.format("%d-%m-%Y") + "\n";
+            //  output += "Berat: " + berat + "\n";
+            //  output += "Modal: " + modal + "\n\n";
+            //  stream.write(output.data);
+            //  stream.close();
+
+            //  string? line1st = scanner.read_line();
+
+            string output = "";
+
+            //  if(line1st == null){
+            //      output += "{\n\t{\n";
+            //  }
+            //  else{
+            //      output += "{\n\t{\n";
+            //  }
+
+            //  output += "{";
+            //  output += "\t\n\t{\n\t\t\"Jenis pakan\": \"" + jenisPakan + "\"\n\t},";
+            //  output += "\t\n\t{\n\t\t\"Nama pakan\": \"" + namaPakan + "\"\n\t},";
+            //  output += "\t\n\t{\n\t\t\"Id pakan\": \"" + idPakan + "\"\n\t},";
+            //  output += "\t\n\t{\n\t\t\"Berat\": \"" + berat + "\"\n\t},";
+            //  output += "\t\n\t{\n\t\t\"Tanggal\": \"" + tanggal.format("%d-%m-%Y") + "\"\n\t},";
+            //  output += "\t\n\t{\n\t\t\"Modal\": \"" + modal + "\"\n\t},";
+            //  output += "\n},\n";
+            //  stream.write(output.data);
+            //  stream.close();
+
+            output += "{";
+            output += "\n\t\"Jenis pakan\": \"" + jenisPakan + "\",";
+            output += "\n\t\"Nama pakan\": \"" + namaPakan + "\",";
+            output += "\n\t\"Id pakan\": \"" + idPakan + "\",";
+            output += "\n\t\"Berat\": \"" + berat + "\",";
+            output += "\n\t\"Tanggal\": \"" + tanggal.format("%d-%m-%Y") + "\",";
+            output += "\n\t\"Modal\": \"" + modal + "\",";
+            output += "\n},\n";
             stream.write(output.data);
             stream.close();
 

@@ -16,10 +16,10 @@ class PakanModel{
                 if (line == null) {
                     break;
                 }
-                content += line + "\n";
+                content += line.replace("\"", "").replace(",", "") + "\n";
             }
     
-            string[] entries = content.split("\n\n");
+            string[] entries = content.split("}\n{");
     
             foreach (var entry_str in entries) {
                 string[] lines = entry_str.split("\n");
@@ -28,7 +28,7 @@ class PakanModel{
     
                 foreach (var line in lines) {
                     string[] parts = line.split(": ");
-    
+                    
                     if (parts.length == 2) {
                         entry_dict[parts[0].strip()] = parts[1].strip();
                     }

@@ -1,0 +1,8 @@
+{
+	"Jenis pakan": "Jenis Pakan 1",
+	"Nama pakan": "pakan A",
+	"Id pakan": "#1",
+	"Berat": "10",
+	"Tanggal": "27-12-2023",
+	"Modal": "100000",
+},
